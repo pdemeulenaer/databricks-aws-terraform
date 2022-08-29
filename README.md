@@ -6,5 +6,7 @@ The tutorial itself is explained in Provision Databricks workspaces using Terraf
 
 I amended the template to follow more closely https://registry.terraform.io/providers/databricks/databricks/latest/docs/guides/aws-workspace
 
+Spotted bug: on the first terraform apply, I get an error related to the cross-account role being not properly defined, although an inspection in IAM roles in my AWS account shows that it has been defined. By taking the ARN number and injecting it within the cross-account-role.tf (in the rolw_arn command within the resource "databricks_mws_credentials"), it then works on the second terraform apply. I need to figure out how to resolve this. 
+
 terraform init
 terraform apply -var-file="tutorial.tfvars"
