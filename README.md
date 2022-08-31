@@ -10,5 +10,8 @@ Spotted bug: on the first terraform apply, I get an error related to the cross-a
 
 Update on that bug: actually you can also just run twice the terraform apply command, and the second time will detect the created cross-account role and work. I nonetheless think that the first time could work with a fixed dependency declaration. Think about a PR on that. 
 
+Commands to run:
+
 terraform init
+terraform plan -var-file="tutorial.tfvars"
 terraform apply -var-file="tutorial.tfvars"
