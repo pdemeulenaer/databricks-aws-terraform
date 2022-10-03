@@ -60,6 +60,7 @@ module "vpc_endpoints" {
       # by default, service_type = "Interface"      
       private_dns_enabled = true
       subnet_ids          = module.vpc.private_subnets
+      # by default, policy = null
       tags                = {
         Name = "${local.prefix}-sts-vpc-endpoint"
       }
@@ -69,6 +70,7 @@ module "vpc_endpoints" {
       # by default, service_type = "Interface"      
       private_dns_enabled = true
       subnet_ids          = module.vpc.private_subnets
+      # by default, policy = null
       tags                = {
         Name = "${local.prefix}-kinesis-vpc-endpoint"
       }
