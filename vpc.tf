@@ -36,7 +36,7 @@ module "vpc" {
 }
 
 // Create the required VPC endpoints within your AWS account.
-// See https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest/submodules/vpc-endpoints
+// See https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest/submodules/vpc-endpoints (or https://github.com/terraform-aws-modules/terraform-aws-vpc/blob/v3.16.0/modules/vpc-endpoints/main.tf for source code)
 module "vpc_endpoints" {
   source = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
   version = "3.2.0"
@@ -57,6 +57,7 @@ module "vpc_endpoints" {
     },
     sts = {
       service             = "sts"
+      # by default, service_type = "Interface"      
       private_dns_enabled = true
       subnet_ids          = module.vpc.private_subnets
       tags                = {
@@ -65,6 +66,7 @@ module "vpc_endpoints" {
     },
     kinesis-streams = {
       service             = "kinesis-streams"
+      # by default, service_type = "Interface"      
       private_dns_enabled = true
       subnet_ids          = module.vpc.private_subnets
       tags                = {
